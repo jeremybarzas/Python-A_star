@@ -17,9 +17,9 @@ class Node(object):
         self.graph_index = 0
 
         # drawing vars
-        SIZE = 30
-        self.width = SIZE
-        self.height = SIZE
+        size = 30
+        self.width = size
+        self.height = size
         self.posx = (5 + self.width) * self.pos[0] + 5
         self.posy = (5 + self.height) * self.pos[1] + 5
         self.screenpos = (self.posx, self.posy)
