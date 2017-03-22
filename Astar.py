@@ -1,82 +1,7 @@
-'''AStar algorithim'''
+'''Astar algorithim object'''
 
-
-class Node(object):
-    '''Node object'''
-
-    def __init__(self, position):
-        '''node constructor'''
-        self.pos = position
-        self.gcost = 0
-        self.hcost = 0
-        self.fcost = 0
-        self.walkable = True
-        self.parent = None
-        self.neighbors = []
-        self.graph_index = 0
-
-    def set_neighbors(self, graph):
-        '''set neighbors for a node'''
-        right = [1, 0]
-        top_right = [1, 1]
-        top = [0, 1]
-        top_left = [-1, 1]
-        left = [-1, 0]
-        bottom_left = [-1, -1]
-        bottom = [0, -1]
-        bottom_right = [1, -1]
-        dirs = [right, top_right, top, top_left,
-                left, bottom_left, bottom, bottom_right]
-        for i in dirs:
-            item1 = i[0] + self.pos[0]
-            item2 = i[1] + self.pos[1]
-            fetch_node = graph.get_node([item1, item2])
-            if fetch_node:
-                self.neighbors.append(fetch_node)
-
-    def dist_between(self, neighbor):
-        '''get g score '''
-        if self.pos[0] == neighbor.pos[0] or self.pos[1] == neighbor.pos[1]:
-            return 10
-        else:
-            return 14
-
-    def print_info(self):
-        '''print info'''
-        line1 = "ID: " + str(self.graph_index)
-        line2 = "  Position: " + str(self.pos[0]) + ',' + str(self.pos[1])
-        print line1 + line2
-
-
-class Graph(object):
-    '''Graph object'''
-
-    def __init__(self, size):
-        '''constructor'''
-        cols = size[0]
-        rows = size[1]
-        self.nodelist = []
-        for i in range(0, cols):
-            for j in range(0, rows):
-                self.nodelist.append(Node([i, j]))
-        for node in self.nodelist:
-            node.graph_index = self.nodelist.index(node)
-            node.set_neighbors(self)
-
-    def get_node(self, searchfor):
-        '''get a node by list [1,1]'''
-        for node in self.nodelist:
-            if node.pos == searchfor:
-                return node
-
-    def print_info(self):
-        '''print node'''
-        for node in self.nodelist:
-            node.print_info()
-
-
-class AStar(object):
-    '''AStar algorithim'''
+class Astar(object):
+    '''Astar algorithim'''
 
     def __init__(self):
         '''constructor'''
@@ -88,7 +13,7 @@ class AStar(object):
         return (x_dif + y_dif) * 10
 
     def pathfind(self, start, goal):
-        '''the astar search algorithim'''
+        '''the Astar search algorithim'''
         print "\nStart Node:"  # DEBUG STUFF
         start.print_info()  # DEBUG STUFF
         print "Goal Node:"  # DEBUG STUFF
@@ -116,8 +41,8 @@ class AStar(object):
                     continue
                 neighbor.parent = current
                 neighbor.gcost = tent_gcost
-                neighbor.hCost = self.manhattan_distance(neighbor, goal)
-                neighbor.fCost = neighbor.gcost + neighbor.hcost
+                neighbor.hcost = self.manhattan_distance(neighbor, goal)
+                neighbor.fcost = neighbor.gcost + neighbor.hcost
         return False
 
     def retrace(self, node):
