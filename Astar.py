@@ -24,8 +24,8 @@ def pathfind(start, goal, graph):
     closedlist = []
     path = []
     openlist.append(start)
-    while openlist.count != 0:
-        openlist.sort(key=lambda x: x.f)
+    openlist.sort(key=lambda x: x.f)
+    while len(openlist) != 0:
         current = openlist[0]
         openlist.remove(current)
         closedlist.append(current)

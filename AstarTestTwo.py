@@ -18,7 +18,7 @@ def main():
     failcount = 0
     passcount = 0
     testnum = 1
-    for _ in range(10000):
+    for _ in range(1000):
         print "Test" + str(testnum)
         res = testfunc(pathfind)
         if res:
