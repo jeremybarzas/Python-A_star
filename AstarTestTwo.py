@@ -18,7 +18,7 @@ def main():
     failcount = 0
     passcount = 0
     testnum = 1
-    for _ in range(1000):
+    for _ in range(10):
         print "Test" + str(testnum)
         res = testfunc(pathfind)
         if res:
@@ -27,6 +27,7 @@ def main():
             failcount += 1
         testnum += 1
     print str.format('fails {0}, passes {1}', failcount, passcount)
+    input('Press <ENTER> to continue')
 
 
 if __name__ == '__main__':

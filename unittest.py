@@ -46,7 +46,7 @@ def unit_test():
     # this is the path taken from start to goal
     path_taken = []
     # this is the A * algorithim being called and its return value being store in path_taken
-    path_taken = Astar.pathfind(start, goal, search_space)
+    path_taken = Astar.pathfind(start, goal, search_space.nodelist)
     # variable to control the loop
     done = False
     while not done:
