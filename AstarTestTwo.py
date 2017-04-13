@@ -27,8 +27,8 @@ def main():
             failcount += 1
         testnum += 1
     print str.format('fails {0}, passes {1}', failcount, passcount)
-    input('Press <ENTER> to continue')
 
 
 if __name__ == '__main__':
     main()
+    raw_input()
