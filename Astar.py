@@ -32,15 +32,15 @@ def pathfind(start, goal, graph):
         if current == goal:
             path = retrace(current)
             return path
-        neighbors = getneighbors(current, search_space)
-        for neighbor in neighbors:
+        current.neighbors = getneighbors(current, search_space)
+        for neighbor in current.neighbors:
             if neighbor in closedlist or not neighbor.walkable:
                 continue
             tent_gcost = current.g + dist_between(current, neighbor)
             if neighbor not in openlist:
                 neighbor.f = neighbor.g + neighbor.h
                 openlist.append(neighbor)
-            elif tent_gcost >= neighbor.g:
+            elif tent_gcost > neighbor.g:
                 continue
             neighbor.parent = current
             neighbor.g = tent_gcost
