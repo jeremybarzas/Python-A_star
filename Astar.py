@@ -32,7 +32,7 @@ def pathfind(start, goal, graph):
         if current == goal:
             path = retrace(current)
             return path
-        neighbors = getneighbors(current, search_space)
+        neighbors = getneighbors(current, search_space.nodelist)
         for neighbor in neighbors:
             if neighbor in closedlist or not neighbor.walkable:
                 continue

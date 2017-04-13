@@ -1,7 +1,7 @@
 '''Unit testing for astar algorithim'''
 
 import pygame
-from Astar import Astar
+import Astar
 from Graph import Graph
 
 def unit_test():
@@ -46,8 +46,7 @@ def unit_test():
     # this is the path taken from start to goal
     path_taken = []
     # this is the A * algorithim being called and its return value being store in path_taken
-    astar = Astar()
-    path_taken = astar.pathfind(start, goal)
+    path_taken = Astar.pathfind(start, goal, search_space)
     # variable to control the loop
     done = False
     while not done:

@@ -8,9 +8,9 @@ class Node(object):
     def __init__(self, position):
         '''node constructor'''
         self.pos = position
-        self.gcost = 0
-        self.hcost = 0
-        self.fcost = 0
+        self.g = 0
+        self.h = 0
+        self.f = self.h + self.g
         self.walkable = True
         self.parent = None
         self.neighbors = []
@@ -25,6 +25,10 @@ class Node(object):
         self.screenpos = (self.posx, self.posy)
         self.surface = pygame.Surface((self.width, self.height))
         self.color = (0, 0, 0)
+
+    def __getitem__(self, key):
+        '''get position with index'''
+        return self.pos[key]
 
     def draw(self, screen):
         ''' draw node to screen'''
